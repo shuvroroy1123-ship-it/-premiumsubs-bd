@@ -659,7 +659,9 @@ font-weight:600;
 <input placeholder="Email" style="width:100%;padding:10px;margin:5px 0">
 <input placeholder="WhatsApp Number" style="width:100%;padding:10px;margin:5px 0">
 <input placeholder="Transaction ID" style="width:100%;padding:10px;margin:5px 0">
-<button class="btn">Submit Order</button>
+<button class="btn" type="button" onclick="submitOrder()">
+  Submit Order
+</button>
 </div>
 <h2 class="section-title" style="font-size:32px; font-weight:800; color:#0f172a;">
 🎯 কারা এই সংগ্রহ ব্যবহার করতে পারেন?
@@ -975,6 +977,29 @@ function copyNumber() {
   navigator.clipboard.writeText(number).then(() => {
     document.getElementById("copyMsg").innerText =
       "✅ নম্বর কপি হয়েছে!";
+  });
+}
+</script>
+  <script>
+function submitOrder() {
+
+  const data = {
+    name: document.querySelector('input[placeholder="Your Name"]').value,
+    email: document.querySelector('input[placeholder="Email"]').value,
+    whatsapp: document.querySelector('input[placeholder="WhatsApp Number"]').value,
+    transaction: document.querySelector('input[placeholder="Transaction ID"]').value
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbzrJRzUaDX7P37WWb35haogAMFm2OEqmyxCgxBWVhsk7o1JwJPNJNXLqdd0uRwsNbROVQ/exec", {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(res => {
+    alert("✅ Order Submitted Successfully!");
+  })
+  .catch(err => {
+    alert("❌ Error submitting order!");
   });
 }
 </script>
