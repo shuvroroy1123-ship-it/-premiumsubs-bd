@@ -243,13 +243,25 @@ margin-top:40px;
 
 <!-- PAYMENT -->
 <h2 class="section-title">💳 Payment</h2>
-<div class="grid">
-<div class="card">bKash: 01308514533</div>
-<div class="card">Nagad: 01308514533</div>
-</div>
 
-<!-- CHECKOUT -->
-<h2 class="section-title" id="checkout">🧾 Checkout</h2>
+<div class="grid">
+  <div class="card" style="text-align:center;">
+    <h3>📱 bKash / Nagad</h3>
+
+    <div id="paymentNumber"
+         style="font-size:22px;font-weight:bold;margin:15px 0;color:#0f172a;">
+      01308514533
+    </div>
+
+    <button onclick="copyNumber()"
+            style="background:#22c55e;color:white;border:none;
+            padding:12px 20px;border-radius:8px;cursor:pointer;">
+      📋 নম্বর কপি করুন
+    </button>
+
+    <p id="copyMsg" style="margin-top:10px;color:green;"></p>
+  </div>
+</div>
 
 <form class="card">
 <input placeholder="Your Name" style="width:100%;padding:12px;margin:8px 0;border-radius:8px;">
@@ -300,6 +312,15 @@ a.style.display=a.style.display==="block"?"none":"block";
 });
 });
 </script>
+<script>
+function copyNumber() {
+  const number = document.getElementById("paymentNumber").innerText;
 
+  navigator.clipboard.writeText(number).then(() => {
+    document.getElementById("copyMsg").innerText =
+      "✅ নম্বর কপি হয়েছে!";
+  });
+}
+</script>
 </body>
 </html>
