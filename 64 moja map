@@ -323,5 +323,28 @@ function copyNumber() {
   });
 }
 </script>
+<script>
+function submitOrder() {
+
+  const data = {
+    name: document.querySelector('input[placeholder="Your Name"]').value,
+    email: document.querySelector('input[placeholder="Email"]').value,
+    whatsapp: document.querySelector('input[placeholder="WhatsApp Number"]').value,
+    transaction: document.querySelector('input[placeholder="Transaction ID"]').value
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbzrJRzUaDX7P37WWb35haogAMFm2OEqmyxCgxBWVhsk7o1JwJPNJNXLqdd0uRwsNbROVQ/exec", {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(res => {
+    alert("✅ Order Submitted Successfully!");
+  })
+  .catch(err => {
+    alert("❌ Error submitting order!");
+  });
+}
+</script>
 </body>
 </html>
