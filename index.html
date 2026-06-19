@@ -968,7 +968,16 @@ ans.style.display=ans.style.display==='block'?'none':'block';
 });
 });
 </script>
+<script>
+function copyNumber() {
+  const number = document.getElementById("paymentNumber").innerText;
 
+  navigator.clipboard.writeText(number).then(() => {
+    document.getElementById("copyMsg").innerText =
+      "✅ নম্বর কপি হয়েছে!";
+  });
+}
+</script>
 <footer>© 2026 PremiumSubs BD</footer>
 
 </body>
