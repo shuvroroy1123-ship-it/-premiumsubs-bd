@@ -312,6 +312,7 @@ a.style.display=a.style.display==="block"?"none":"block";
 });
 });
 </script>
+
 <script>
 function copyNumber() {
   const number = document.getElementById("paymentNumber").innerText;
